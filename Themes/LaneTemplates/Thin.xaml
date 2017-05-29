@@ -1,0 +1,119 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LapX">
+    
+    <!-- Thin LaneView template -->
+    <DataTemplate x:Key="LVTemplateThin">
+        <Border Name="myborder" Margin="10,10,10,10" Background="Black" BorderThickness="5">
+            <Border.BorderBrush>
+                <SolidColorBrush x:Name="LapHighlight" Color="#ff000000"/>
+            </Border.BorderBrush>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Viewbox Grid.Column="0" Stretch="Uniform">
+                    <Canvas Width="200" Height="100" >
+                        <Rectangle x:Name="FinishFlag2" 
+                            Fill="{DynamicResource Chequered}"
+                           Canvas.Left="100" Canvas.Top="20"
+                           Width="60" Height="60" Opacity="0.0"/>
+                        
+                        <Ellipse Width="60" Height="60" Canvas.Top="20" Canvas.Left="10" Opacity="1">
+                            <Ellipse.Fill>
+                                 <SolidColorBrush Color="{Binding LaneColor}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Canvas>
+                </Viewbox>
+                
+                
+                <Viewbox Grid.Column="1" Stretch="Uniform">
+                    <Canvas Width="400" Height="100" >
+                        
+                        <TextBlock FontSize="48" Foreground="White"
+                                  Canvas.Left="10" Canvas.Top="15"
+                                  Width="60" TextAlignment="Right"
+                                  Text="{Binding Position}" />
+                        <TextBlock FontSize="24" Foreground="White"
+                                  Canvas.Left="70"
+                                  Canvas.Top="10"
+                                  Width="60" TextAlignment="Left"
+                                  Text="{Binding PositionSuffix}" />
+                        
+                        
+                        <TextBlock FontSize="48" Foreground="White"
+                                   Canvas.Left="150" Canvas.Top="15" Width="150"
+                                   TextAlignment="Right"
+                                   Text="{Binding Lap}" />
+                    </Canvas>
+                </Viewbox>        
+                        
+                <Viewbox Grid.Column="2" Stretch="Uniform">
+                    <Canvas Width="600" Height="100">
+                        <TextBlock FontSize="48" Foreground="Yellow" Canvas.Left="10" Canvas.Top="15">Last:</TextBlock>
+                        <TextBlock FontSize="48" Foreground="White" Canvas.Left="100" Width="180" TextAlignment="Right" Canvas.Top="15" Text="{Binding LastLapTime}" />
+                    
+                        <TextBlock FontSize="48" Foreground="Yellow" Canvas.Left="310" Canvas.Top="15">Best:</TextBlock>
+                        <TextBlock FontSize="48" Foreground="White" Canvas.Left="400" Width="180" TextAlignment="Right" Canvas.Top="15" Text="{Binding BestLapTime}" />
+                    </Canvas>                    
+                </Viewbox>
+            </Grid>
+        </Border>
+        
+    <DataTemplate.Triggers>
+    
+            <DataTrigger Binding="{Binding Path=Finished}" Value="true">
+                <DataTrigger.Setters>
+                    <Setter Property="Opacity" TargetName="FinishFlag2" Value="1.0" />
+                </DataTrigger.Setters>
+            </DataTrigger>
+        
+        
+        
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.FastestLap}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Gold" To="Black" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.PersonalBest}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Blue" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+                        
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.Detected}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Gray" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>   
+        
+        
+    
+    </DataTemplate.Triggers>
+        
+    </DataTemplate>
+    
+</ResourceDictionary>

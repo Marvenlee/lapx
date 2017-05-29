@@ -1,0 +1,149 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LapX">
+    
+    <!-- Thin LaneView template -->
+    <DataTemplate x:Key="LVTemplateMoonlight">
+        
+        <Viewbox Stretch="Uniform"  Margin="10,10,10,10">
+			<Canvas Width="962" Height="242">
+				<Path x:Name="BlueBackground" Width="962" Height="242" Canvas.Left="3.8147e-006" Canvas.Top="-6.10352e-005" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Data="F1 M 26,0.999939L 936,0.999939C 949.807,0.999939 961,12.1928 961,25.9999L 961,216C 961,229.807 949.807,241 936,241L 26,241C 12.1929,241 1,229.807 1,216L 1,25.9999C 1,12.1928 12.1929,0.999939 26,0.999939 Z ">
+					<Path.Stroke>
+                        <SolidColorBrush x:Name="LapHighlight" Color ="#ff000000"/>
+                    </Path.Stroke>
+                    <Path.Fill>
+						<LinearGradientBrush StartPoint="0.480423,0.00159836" EndPoint="0.480423,1.00161">
+							<LinearGradientBrush.GradientStops>
+								<GradientStop Color="#FF252C76" Offset="0"/>
+								<GradientStop Color="#FF202662" Offset="0.647249"/>
+								<GradientStop Color="#FF1C204E" Offset="0.841424"/>
+								<GradientStop Color="#FF13152F" Offset="0.907854"/>
+								<GradientStop Color="#FF0A0A10" Offset="1"/>
+							</LinearGradientBrush.GradientStops>
+						</LinearGradientBrush>
+					</Path.Fill>
+				</Path>
+                
+                 <Rectangle x:Name="FinishFlag" 
+                           Canvas.Left="190" Canvas.Top="20"
+                           Width="400" Height="202" Opacity="0.0">
+                            <Rectangle.Fill>
+                                <ImageBrush TileMode="None"
+                                        Stretch="Uniform" ImageSource="../Icons_files/chequered.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                
+                
+				<Viewbox x:Name="Group" Width="400" Height="141.096" Canvas.Left="19.6001" Canvas.Top="50.4494">
+					<Canvas Width="400" Height="141.096">
+						<Path x:Name="LaneColor" Width="180.6" Height="141.096" Canvas.Left="3.8147e-006" Canvas.Top="0" Stretch="Fill" Data="F1 M 19,0L 161.6,0C 172.093,0 180.6,8.50659 180.6,19L 180.6,122.096C 180.6,132.589 172.093,141.096 161.6,141.096L 19,141.096C 8.50659,141.096 3.8147e-006,132.589 3.8147e-006,122.096L 3.8147e-006,19C 3.8147e-006,8.50659 8.50659,0 19,0 Z ">
+						    <Path.Fill>
+                                <SolidColorBrush Opacity="0.7" Color="{Binding LaneColor}"/>
+                            </Path.Fill>
+                        </Path>
+                        <Path x:Name="Position" Width="149.056" Height="132.278" Canvas.Left="23.1194" Canvas.Top="4.41028" Stretch="Fill" Fill="#E5FFFFFF" Data="F1 M 153.176,136.688L 42.1194,136.688C 31.626,136.688 23.1194,128.181 23.1194,117.688L 23.1194,23.4103C 23.1194,12.9169 31.626,4.41028 42.1194,4.41028L 153.176,4.41028C 163.669,4.41028 172.176,12.9169 172.176,23.4103L 172.176,117.688C 172.176,128.181 163.669,136.688 153.176,136.688 Z "/>
+					
+                         <TextBlock FontSize="100" Foreground="Black" 
+                                  Canvas.Left="10" Canvas.Top="10"
+                                  Width="100" TextAlignment="Right"
+                                  Text="{Binding Position}" />
+                         <TextBlock FontSize="50" Foreground="Black" 
+                                  Canvas.Left="110"
+                                  Canvas.Top="10"
+                                  Width="80" TextAlignment="Left"
+                                  Text="{Binding PositionSuffix}" />
+                        
+                       
+                                
+                        <TextBlock FontSize="100" Foreground="White" VerticalAlignment="Center"
+                                   Canvas.Left="180" Canvas.Top="10"
+                                   Width="250" TextAlignment="Right"
+                                   Text="{Binding Lap}" />
+                        
+                    
+                    </Canvas>
+				</Viewbox>
+                
+                
+                
+                
+                                     
+                <TextBlock FontSize="100" Foreground="White" VerticalAlignment="Top"
+                                   Canvas.Left="530" Width="400" TextAlignment="Right"
+                                   Canvas.Top="10" Text="{Binding LastLapTime}" />
+                
+                <TextBlock FontSize="100" Foreground="White" VerticalAlignment="Top"
+                                   Canvas.Left="530" Width="400" TextAlignment="Right"
+                                    Opacity="0.6"
+                                   Canvas.Top="120" Text="{Binding BestLapTime}" />
+                
+				<Path x:Name="Highlight" Width="925.716" Height="109.088" Canvas.Left="18.1422" Canvas.Top="15.5484" Stretch="Fill" Data="F1 M 38.1422,15.5484L 923.858,15.5484C 934.904,15.5484 943.858,24.5027 943.858,35.5484L 943.858,104.636C 943.858,115.682 934.904,124.636 923.858,124.636L 38.1422,124.636C 27.0965,124.636 18.1422,115.682 18.1422,104.636L 18.1422,35.5484C 18.1422,24.5027 27.0965,15.5484 38.1422,15.5484 Z ">
+					<Path.Fill>
+						<LinearGradientBrush StartPoint="0.480423,0.00158004" EndPoint="0.480423,1.00158">
+							<LinearGradientBrush.GradientStops>
+								<GradientStop Color="#00252C76" Offset="0"/>
+								<GradientStop Color="#258F92B7" Offset="0.352751"/>
+								<GradientStop Color="#49F9F9F9" Offset="1"/>
+							</LinearGradientBrush.GradientStops>
+						</LinearGradientBrush>
+					</Path.Fill>
+				</Path>
+			</Canvas>
+		</Viewbox>
+            
+        
+                
+
+        <!-- Triggers -->
+        
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=Finished}" Value="true">
+                <DataTrigger.Setters>
+                    <Setter Property="Opacity" TargetName="FinishFlag" Value="0.3" />
+                </DataTrigger.Setters>
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.FastestLap}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Gold" To="Black" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                    
+                    <!-- Make animations into resources? Or name them ? -->
+                    
+                    
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.PersonalBest}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Blue" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+                        
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.Detected}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Gray" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>   
+            
+        </DataTemplate.Triggers>   
+
+    </DataTemplate>
+</ResourceDictionary>

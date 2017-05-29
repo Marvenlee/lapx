@@ -1,0 +1,228 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LapX">
+                    
+    
+    <!-- Standard LaneView template -->
+    <DataTemplate x:Key="LVTemplateStandard">
+        <Border Name="myborder" Margin="0,10,0,10" Background="Black" BorderThickness="5">
+            <Border.BorderBrush>
+                <SolidColorBrush x:Name="LapHighlight" Color="#ff000000"/>
+            </Border.BorderBrush>
+        
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Viewbox Grid.Column="0" Stretch="Uniform">
+                    <Canvas Width="500" Height="200">
+                        <Rectangle Canvas.Left="20" Canvas.Top="10" Width="80" Height="80">
+                            <Rectangle.Fill>
+                                <DrawingBrush>                                        
+                                    <DrawingBrush.Drawing>
+			                            <DrawingGroup>
+				                            <DrawingGroup.Children>
+					                            <GeometryDrawing Geometry="F1 M 29.12,19.3066L 29.4667,19.8933L 29.0667,20.4533L 2.90667,30.4533L 2.90667,29.0933L 29.12,19.3066 Z ">
+						                            <GeometryDrawing.Brush>
+							                            <LinearGradientBrush StartPoint="0,0.508375" EndPoint="1,0.508375">
+								                            <LinearGradientBrush.GradientStops>
+									                            <GradientStop Color="#FF939393" Offset="0"/>
+									                            <GradientStop Color="#FF5E5E5E" Offset="0.527778"/>
+									                            <GradientStop Color="#FF292929" Offset="1"/>
+								                            </LinearGradientBrush.GradientStops>
+							                            </LinearGradientBrush>
+						                            </GeometryDrawing.Brush>
+					                            </GeometryDrawing>
+					                            <GeometryDrawing  Geometry="F1 M 2.45333,29.44L 0.96,26.4533L 0,22.4L 0.213333,21.2267L 1.28,21.12L 2.02667,10.88C 2.84444,8.92444 4.4,5.65332 5.12003,4.61334C 5.84005,3.5733 7.86664,2.21332 9.17333,1.49335C 10.48,0.773315 12.08,0.266663 14.08,0C 16.08,-0.266663 18.6133,-0.266663 20.9067,0.213318C 23.2,0.693298 24.5857,1.6264 25.6,2.45331C 26.6143,3.28021 28.0533,5.03998 28.9067,6.82666C 29.76,8.61334 30.2666,10.8533 30.2933,12.3734C 30.32,13.8933 30.1511,14.7911 30.08,16L 29.12,19.3066L 15.04,24.64L 2.45333,29.44 Z ">
+						                            <GeometryDrawing.Brush>
+                                                        <SolidColorBrush Color="{Binding LaneColor}"/>
+                                                        </GeometryDrawing.Brush>
+                                                                
+                                                      
+                                                    <GeometryDrawing.Pen>
+							                            <Pen Thickness="1" LineJoin="Round" Brush="#FF000000"/>
+						                            </GeometryDrawing.Pen>
+					                            </GeometryDrawing>
+					                            <GeometryDrawing Geometry="F1 M 1.62667,11.3867L 6.50667,11.3066L 9.70667,10.5867L 13.3867,8.66669C 13.8933,8.53333 13.7079,8.18475 14.9065,8.26666C 16.105,8.34857 15.9199,8.79999 16.4267,9.06665C 16.48,9.49335 16.7084,9.62476 16.5867,10.3467C 16.465,11.0686 15.2533,13.3867 14.5867,14.9067L 12.7467,17.7067L 9.78667,19.8666L 0.666667,21.1467L 0.746667,17.0667L 1.62667,11.3867 Z ">
+						                            <GeometryDrawing.Brush>
+							                            <LinearGradientBrush StartPoint="-0.0460838,0.426188" EndPoint="0.964372,0.426188">
+								                            <LinearGradientBrush.RelativeTransform>
+									                            <TransformGroup>
+										                            <SkewTransform CenterX="-0.0460838" CenterY="0.426188" AngleX="2.43519" AngleY="0"/>
+										                            <RotateTransform CenterX="-0.0460838" CenterY="0.426188" Angle="7.05481"/>
+									                            </TransformGroup>
+								                            </LinearGradientBrush.RelativeTransform>
+								                            <LinearGradientBrush.GradientStops>
+									                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+									                            <GradientStop Color="#FFC2C2C2" Offset="0.122977"/>
+									                            <GradientStop Color="#FF929292" Offset="0.23301"/>
+									                            <GradientStop Color="#FF767676" Offset="0.281553"/>
+									                            <GradientStop Color="#FF878787" Offset="0.367812"/>
+									                            <GradientStop Color="#FF999999" Offset="0.485437"/>
+									                            <GradientStop Color="#FF767676" Offset="0.663798"/>
+									                            <GradientStop Color="#FF545454" Offset="0.799353"/>
+									                            <GradientStop Color="#FF545454" Offset="1"/>
+								                            </LinearGradientBrush.GradientStops>
+							                            </LinearGradientBrush>
+						                            </GeometryDrawing.Brush>
+					                            </GeometryDrawing>
+					                            <GeometryDrawing Geometry="F1 M 6.38414,4.02948C 10.3402,0.0703735 16.1666,-0.521729 19.3978,2.70691C 22.6289,5.93561 22.0412,11.7625 18.0851,15.7215C 14.129,19.6806 8.30258,20.2728 5.07146,17.0441C 1.84034,13.8154 2.42804,7.98859 6.38414,4.02948 Z ">
+						                            <GeometryDrawing.Brush>
+							                            <RadialGradientBrush RadiusX="1.08244" RadiusY="1.08256" Center="0.745363,0.0325163" GradientOrigin="0.745363,0.0325163">
+								                            <RadialGradientBrush.GradientStops>
+									                            <GradientStop Color="#9EFFFFFF" Offset="0"/>
+									                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+								                            </RadialGradientBrush.GradientStops>
+								                            <RadialGradientBrush.RelativeTransform>
+									                            <TransformGroup>
+										                            <RotateTransform CenterX="0.745363" CenterY="0.0325163" Angle="112.059"/>
+									                            </TransformGroup>
+								                            </RadialGradientBrush.RelativeTransform>
+							                            </RadialGradientBrush>
+						                            </GeometryDrawing.Brush>
+					                            </GeometryDrawing>
+					                            <GeometryDrawing Geometry="F1 M 10.9213,1.67548C 14.0763,0.655884 17.0591,1.14502 17.5836,2.76801C 18.1081,4.39099 15.9757,6.5332 12.8207,7.55286C 9.66577,8.57245 6.68295,8.08331 6.15844,6.46033C 5.63393,4.83734 7.76634,2.69507 10.9213,1.67548 Z ">
+						                            <GeometryDrawing.Brush>
+							                            <RadialGradientBrush RadiusX="0.814721" RadiusY="0.503854" Center="0.296409,0.173422" GradientOrigin="0.296409,0.173422">
+								                            <RadialGradientBrush.GradientStops>
+									                            <GradientStop Color="#88FFFFFF" Offset="0"/>
+									                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+								                            </RadialGradientBrush.GradientStops>
+								                            <RadialGradientBrush.RelativeTransform>
+									                            <TransformGroup>
+										                            <SkewTransform CenterX="0.296409" CenterY="0.173422" AngleX="32.3323" AngleY="0"/>
+										                            <RotateTransform CenterX="0.296409" CenterY="0.173422" Angle="69.4112"/>
+									                            </TransformGroup>
+								                            </RadialGradientBrush.RelativeTransform>
+							                            </RadialGradientBrush>
+						                            </GeometryDrawing.Brush>
+					                            </GeometryDrawing>
+					                            <GeometryDrawing Geometry="F1 M 3.86668,28.16L 1.60002,24.16L 1.49286,22.3443L 17.7862,18.9843L 18.5867,22.9333L 3.86668,28.16 Z ">
+						                            <GeometryDrawing.Brush>
+							                            <RadialGradientBrush RadiusX="0.278317" RadiusY="0.512699" Center="0.257432,0.482692" GradientOrigin="0.257432,0.482692">
+								                            <RadialGradientBrush.GradientStops>
+									                            <GradientStop Color="#3AFFFFFF" Offset="0"/>
+									                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+								                            </RadialGradientBrush.GradientStops>
+								                            <RadialGradientBrush.RelativeTransform>
+									                            <TransformGroup>
+										                            <SkewTransform CenterX="0.257432" CenterY="0.482692" AngleX="5.11446" AngleY="0"/>
+										                            <RotateTransform CenterX="0.257432" CenterY="0.482692" Angle="7.19862"/>
+									                            </TransformGroup>
+								                            </RadialGradientBrush.RelativeTransform>
+							                            </RadialGradientBrush>
+						                            </GeometryDrawing.Brush>
+					                            </GeometryDrawing>
+                            					
+				                            </DrawingGroup.Children>
+			                            </DrawingGroup>
+		                            </DrawingBrush.Drawing>
+	                            </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>   
+
+                        
+                        <!-- Finish Flag -->
+                        
+                        <Rectangle x:Name="FinishFlag2" 
+                           Canvas.Left="250" Canvas.Top="10"
+                           Width="80" Height="80" Opacity="0.0">
+                            <Rectangle.Fill>
+                                <ImageBrush TileMode="None"
+                                    Stretch="Uniform"
+                                    ImageSource="../Icons_files/chequered.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        
+                        <!-- Position -->
+                        
+                        <TextBlock FontSize="96" Foreground="White"
+                                  Canvas.Left="20" Canvas.Top="80"
+                                  Width="60" TextAlignment="Right"
+                                  Text="{Binding Position}" />
+                        <TextBlock FontSize="48" Foreground="White"
+                                  Canvas.Left="80"
+                                  Canvas.Top="80"
+                                  Width="60" TextAlignment="Left"
+                                  Text="{Binding PositionSuffix}" />
+                                    
+                                    
+                                    <!-- Lap -->
+                         
+                        <TextBlock FontSize="96" Foreground="White"
+                                   Canvas.Left="250" Canvas.Top="80"
+                                   Width="250"
+                                   Text="{Binding Lap}" />
+                    </Canvas>
+                </Viewbox>
+                                    
+                <Viewbox Grid.Column="1" Stretch="Uniform">
+                    <Canvas Width="450" Height="200">
+                        <TextBlock FontSize="76" Foreground="Yellow"
+                                   Canvas.Left="10" Canvas.Top="0">Last:</TextBlock>
+                        
+                        <TextBlock FontSize="76" Foreground="White"
+                                   Canvas.Left="180" Width="250" TextAlignment="Right"
+                                   Canvas.Top="0" Text="{Binding LastLapTime}" />
+                    
+                        <TextBlock FontSize="76" Foreground="Yellow"
+                                   Canvas.Left="10" Canvas.Top="100">Best:</TextBlock>
+                        <TextBlock FontSize="76" Foreground="White"
+                                   Canvas.Left="180" Width="250" TextAlignment="Right"
+                                   Canvas.Top="100" Text="{Binding BestLapTime}" />
+                    </Canvas>                    
+                </Viewbox>
+            </Grid>
+        </Border>
+                        
+        <!-- Triggers -->
+        
+        <DataTemplate.Triggers>
+           <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.FastestLap}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Gold" To="Black" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.PersonalBest}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Blue" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+                        
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.Detected}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Gray" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>   
+            
+            <DataTrigger Binding="{Binding Path=Finished}" Value="true">
+                <DataTrigger.Setters>
+                    <Setter Property="Opacity" TargetName="FinishFlag2" Value="1.0" />
+                </DataTrigger.Setters>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>
+    
+    

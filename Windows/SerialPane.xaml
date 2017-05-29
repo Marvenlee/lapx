@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="LapX.Windows.SerialPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="296" Width="307">
+    <Grid>
+        <Label Height="28" Margin="58,21,123,0" VerticalAlignment="Top">IO Port</Label>
+        <Label Height="28" Margin="58,59,123,0" VerticalAlignment="Top">Lane 1</Label>
+        <Label Height="28" Margin="58,96,123,0" VerticalAlignment="Top">Lane 2</Label>
+        <Label Margin="58,133,123,0" Height="28" VerticalAlignment="Top">Lane 3</Label>
+        <Label Margin="58,171,123,0" Height="28" VerticalAlignment="Top">Lane 4</Label>
+        
+        <ComboBox DisplayMemberPath="Text" Height="23"
+                  ItemsSource="{Binding Path=SerIOPortComboItems}"
+                  Margin="126,21,54,0" SelectedIndex="0"
+                  SelectedValue="{Binding Path=SerIOPort}"
+                  SelectedValuePath="Value" VerticalAlignment="Top" />
+        
+        <ComboBox SelectedIndex="0" Height="23" Margin="126,59,54,0"
+                VerticalAlignment="Top"
+                ItemsSource="{Binding Path=SerPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane1SerPin}"
+                SelectedValuePath="Value" 
+                />
+
+        
+        
+        <ComboBox SelectedIndex="1" Height="23" Margin="126,96,54,0"
+                VerticalAlignment="Top"
+                ItemsSource="{Binding Path=SerPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane2SerPin}"
+                SelectedValuePath="Value" />
+            
+            
+        <ComboBox SelectedIndex="2" Margin="126,133,54,0" ItemsSource="{Binding Path=SerPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane3SerPin}"
+                SelectedValuePath="Value" Height="23" VerticalAlignment="Top" />
+        
+        <ComboBox SelectedIndex="3" Margin="126,171,54,0"
+                ItemsSource="{Binding Path=SerPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane4SerPin}"
+                SelectedValuePath="Value" Height="23" VerticalAlignment="Top" />
+
+        <CheckBox Height="16" Margin="126,212,28,0"
+                  IsChecked="{Binding Path=SerialPortInvertLogic}"
+                  VerticalAlignment="Top">Invert Serial Port Inputs</CheckBox>
+        
+    </Grid>
+</UserControl>

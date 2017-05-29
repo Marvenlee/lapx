@@ -1,0 +1,258 @@
+﻿<src:WindowBase x:Class="LapX.OptionsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LapX"
+    xmlns:Controls="clr-namespace:LapX"
+    xmlns:src="clr-namespace:LapX"
+    xmlns:Panes="clr-namespace:LapX.Windows"
+    Title="OptionsWindow" Height="478" Width="488" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <Window.Resources>
+    <local:DurationConverter x:Key="DurationConverter" />
+    </Window.Resources>
+
+        
+    
+    
+    <Grid>
+        <TabControl Margin="11,11,11,50">
+            <TabItem Header="General" IsSelected="True">    
+                <Grid Visibility="Visible">
+                    <Label Margin="60,62,0,0" Name="label1" HorizontalAlignment="Left" Width="140" Height="28.132" VerticalAlignment="Top">Lanes</Label>
+                    <Label Height="28" Margin="60,101,0,0" VerticalAlignment="Top" Name="label2" HorizontalAlignment="Left" Width="160">
+                        Minimum Lap Time (seconds)</Label>
+                    
+                    <TextBox Height="23" Margin="240.407,101,0,0" Name="MinimumLapTimeTextbox"
+                             VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
+                        <Binding Path="MinimumLapTime" Converter="{StaticResource DurationConverter}">
+                         
+                            <Binding.ValidationRules>
+                                <local:DurationRule Min="0.5" Max="30.0" />
+                                <ExceptionValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox>
+
+                    <Label HorizontalAlignment="Left" Margin="60,143,0,0" Name="label3" Width="140" Height="28.132"
+                           VerticalAlignment="Top">Pre Race Delay (seconds)</Label>
+                    
+                    <TextBox Margin="240.407,143,0,0" Name="PreRaceDelayTextbox" HorizontalAlignment="Left" Width="120" Height="23.132" VerticalAlignment="Top">
+                        <Binding Path="PreRaceDelay" Converter="{StaticResource DurationConverter}">
+                            <Binding.ValidationRules>
+                                <local:DurationRule Min="2" Max="30" />
+                                <ExceptionValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox>
+                    
+                    
+                    
+                    <Label Height="28" HorizontalAlignment="Left" Margin="60,183.132,0,0" Name="label14" VerticalAlignment="Top" Width="140">Jump Start</Label>
+                    
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="240.407,183.132,0,0"
+                              Name="PenaltyCombo" VerticalAlignment="Top" Width="120"
+                              ItemsSource="{Binding Path=JumpStartComboItems}"
+                              DisplayMemberPath="Text"
+                              SelectedValue="{Binding Path=JumpStartAction}"
+                              SelectedValuePath="Value"
+                              />
+                    
+                    <ComboBox Height="23" Margin="240,62,0,0"
+                              Name="LanesCombobox" VerticalAlignment="Top"
+                              HorizontalAlignment="Left" Width="120.407"
+                              ItemsSource="{Binding Path=LaneComboItems}"
+                              DisplayMemberPath="Text"
+                              SelectedValue="{Binding Path=LaneCount}"
+                              SelectedValuePath="Value"
+                              />
+                    <Slider Height="30" Margin="240,226.723,0,0"
+                            Value="{Binding Path=SamplingInterval}"
+                            Name="IntervalSlider" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120.407" Minimum="1" SmallChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" />
+                    <Label Height="28" HorizontalAlignment="Left"
+                           Margin="60,226.723,0,0" Name="label17"
+                           VerticalAlignment="Top" Width="113">Sampling Interval</Label>
+                    <Label Height="28" Margin="172,226.723,0,0"
+                               Name="IntervalValueLabel" VerticalAlignment="Top" ContentStringFormat="{}{0:D} ms"
+                              Content="{Binding Path=SamplingInterval}" HorizontalAlignment="Left" Width="48" />
+                    <CheckBox Height="16" HorizontalAlignment="Left"
+                              Margin="240.407,276.138,0,0" Name="ShowStatsCheckBox"
+                              VerticalAlignment="Top" Width="120"
+                              IsChecked="{Binding Path=ShowStatistics}">
+                                Show Statistics</CheckBox>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Sensors" IsSelected="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                
+                    <ListBox Margin="10,11,10,10" Name="SensorListBox"
+                             SelectedIndex="{Binding Path=SensorType, Mode=TwoWay}">
+                        <ListBoxItem>No Sensors</ListBoxItem>
+                        <ListBoxItem>RMS</ListBoxItem>
+                        <ListBoxItem>Parallel Port</ListBoxItem>
+                        <ListBoxItem>Serial Port</ListBoxItem>
+                    </ListBox>
+                    
+                    <StackPanel Grid.Column="1">
+                        <Panes:RMSPane x:Name="RMSPane">
+                            <Panes:RMSPane.Style>
+                                <Style TargetType="Panes:RMSPane">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>             
+                                        <DataTrigger Binding="{Binding ElementName=SensorListBox, Path=SelectedIndex}"   
+                                                     Value="1">                 
+                                            <Setter Property="Visibility" 
+                                                    Value="Visible"/>             
+                                        </DataTrigger>          
+                                    </Style.Triggers>     
+                                </Style>  
+                            </Panes:RMSPane.Style>
+                        </Panes:RMSPane>
+                        
+                        <Panes:ParallelPane x:Name="ParallelPane">
+                            <Panes:ParallelPane.Style>
+                                <Style TargetType="Panes:ParallelPane">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>             
+                                        <DataTrigger Binding="{Binding ElementName=SensorListBox, Path=SelectedIndex}"   
+                                                     Value="2">                 
+                                            <Setter Property="Visibility" 
+                                                    Value="Visible"/>             
+                                        </DataTrigger>          
+                                    </Style.Triggers>     
+                                </Style>  
+                            </Panes:ParallelPane.Style>
+                        </Panes:ParallelPane>
+
+                        <Panes:SerialPane x:Name="SerialPane">
+                            <Panes:SerialPane.Style>
+                                <Style TargetType="Panes:SerialPane">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>             
+                                        <DataTrigger Binding="{Binding ElementName=SensorListBox, Path=SelectedIndex}"   
+                                                     Value="3">                 
+                                            <Setter Property="Visibility" 
+                                                    Value="Visible"/>             
+                                        </DataTrigger>          
+                                    </Style.Triggers>     
+                                </Style>  
+                            </Panes:SerialPane.Style>
+                        </Panes:SerialPane>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            
+            
+            
+            
+            
+            
+            <TabItem Header="Sounds" IsSelected="True">
+                <Grid>
+                    <Controls:FileBrowser IsEnabled="{Binding Path=UseFastestLapSound}"
+                                          x:Name="FastestLapBox"
+                                          FileName="{Binding Path=FastestLapFileName}"
+                                          Margin="125.783,51.646,29.155,0"
+                                          VerticalAlignment="Top" Height="23" />
+                    <CheckBox Height="16" IsChecked="{Binding Path=UseFastestLapSound}" HorizontalAlignment="Left" Margin="28.322,56.644,0,0" Name="FastestLapCheckBox" VerticalAlignment="Top" Width="120">Fastest Lap</CheckBox>
+                    
+                    <Controls:FileBrowser IsEnabled="{Binding Path=UseDetectedLapSound}"
+                                          Height="23" Margin="125.783,126.616,29.155,0"
+                                          x:Name="DetectedLapBox"
+                                          FileName="{Binding Path=DetectedLapFileName}"
+                                          VerticalAlignment="Top" />
+                    <CheckBox Height="16" IsChecked="{Binding Path=UseDetectedLapSound}" HorizontalAlignment="Left" Margin="28.322,131.614,0,0" Name="DetectedLapCheckBox" VerticalAlignment="Top" Width="120">Detected Lap</CheckBox>
+                    
+                    <Controls:FileBrowser IsEnabled="{Binding Path=UseRedLightSound}"
+                                          Height="23" Margin="125.783,164.101,29.155,0"
+                                          x:Name="RedLightBox"
+                                          FileName="{Binding Path=RedLightFileName}"
+                                          VerticalAlignment="Top" />
+                    <CheckBox Height="16" IsChecked="{Binding Path=UseRedLightSound}" HorizontalAlignment="Left" Margin="28.322,168.963,0,0" Name="RedLightCheckBox" VerticalAlignment="Top" Width="120">Red Light</CheckBox>
+                    
+                    <Controls:FileBrowser IsEnabled="{Binding Path=UseRaceStartSound}"
+                                          Height="23" Margin="125.783,200.753,29.155,0"
+                                          x:Name="RaceStartBox"
+                                          FileName="{Binding Path=RaceStartFileName}"
+                                          VerticalAlignment="Top" />
+                    <CheckBox Height="16" IsChecked="{Binding Path=UseRaceStartSound}" HorizontalAlignment="Left" Margin="28.322,205.615,0,0" Name="RaceStartCheckBox" VerticalAlignment="Top" Width="120">Race Start</CheckBox>
+                    
+                    <Controls:FileBrowser IsEnabled="{Binding Path=UseRaceFinishedSound}"
+                                          Height="23" Margin="125.783,238.238,29.155,0"
+                                          x:Name="RaceFinishedBox"
+                                          FileName="{Binding Path=RaceFinishedFileName}"
+                                          VerticalAlignment="Top" />
+                    <CheckBox Height="16" IsChecked="{Binding Path=UseRaceFinishedSound}" HorizontalAlignment="Left" Margin="28.322,243.1,0,0" Name="RaceFinishedCheckBox" VerticalAlignment="Top" Width="120">Race Finished</CheckBox>
+                    
+                    <src:FileBrowser FileName="{Binding Path=PersonalBestFileName}"
+                                     Height="23"
+                                     x:Name="PersonalBestBox" VerticalAlignment="Top" 
+                                     IsEnabled="{Binding Path=UsePersonalBestSound}"
+                                     Margin="125.783,89.131,29.155,0" />
+                    <CheckBox Height="16" HorizontalAlignment="Left" IsChecked="{Binding Path=UsePersonalBestSound}" Margin="28.322,94.129,0,0" Name="PersonalBestCheckBox" VerticalAlignment="Top" Width="120">Personal Best</CheckBox>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Display" IsSelected="True">
+                <Grid>
+                    <GroupBox Header="Lane Colours" Margin="20,23,0,0" Name="groupBox1" IsEnabled="True" SnapsToDevicePixels="True" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="201.407" Height="282.132" VerticalAlignment="Top">
+                        <Grid Height="251" Name="grid1" Width="200">
+                            <ComboBox Height="23" Margin="84,11,26,0" Name="Lane1ColorCombo" VerticalAlignment="Top" ItemsSource="{Binding Path=ColorComboItems}" DisplayMemberPath="Text" SelectedValue="{Binding Path=Lane1Color}" SelectedValuePath="Color" />
+                            <Label Height="28" HorizontalAlignment="Left" Margin="24,11,0,0" Name="label16" VerticalAlignment="Top" Width="51">Lane 1</Label>
+                            <ComboBox Height="23" Margin="84,51,26,0" Name="Lane2ColorCombo" VerticalAlignment="Top" ItemsSource="{Binding Path=ColorComboItems}" DisplayMemberPath="Text" SelectedValue="{Binding Path=Lane2Color}" SelectedValuePath="Color" />
+                            <Label Height="28" HorizontalAlignment="Left" Margin="24,51,0,0" Name="label10" VerticalAlignment="Top" Width="51">Lane 2</Label>
+                            <ComboBox Margin="84,92,26,0" Name="Lane3ColorCombo" ItemsSource="{Binding Path=ColorComboItems}" DisplayMemberPath="Text" SelectedValue="{Binding Path=Lane3Color}" SelectedValuePath="Color" Height="22.753" VerticalAlignment="Top" />
+                            <Label HorizontalAlignment="Left" Margin="24,92,0,0" Name="label11" Width="51" Height="28.132" VerticalAlignment="Top">Lane 3</Label>
+                            <ComboBox Height="23" Margin="84,0,26,96" Name="Lane4ColorCombo" VerticalAlignment="Bottom" ItemsSource="{Binding Path=ColorComboItems}" DisplayMemberPath="Text" SelectedValue="{Binding Path=Lane4Color}" SelectedValuePath="Color" />
+                            <Label Height="28" HorizontalAlignment="Left" Margin="24,0,0,91" Name="label12" VerticalAlignment="Bottom" Width="51">Lane 4</Label>
+                            <ComboBox Height="23" Margin="84,0,26,56" Name="Lane5ColorCombo" VerticalAlignment="Bottom" ItemsSource="{Binding Path=ColorComboItems}" DisplayMemberPath="Text" SelectedValue="{Binding Path=Lane5Color}" SelectedValuePath="Color" />
+                            <Label Height="28" Margin="24,0,0,51" Name="label13" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="51">Lane 5</Label>
+                            <ComboBox Height="23" Margin="84,0,26,16" Name="Lane6ColorCombo" VerticalAlignment="Bottom" ItemsSource="{Binding Path=ColorComboItems}" DisplayMemberPath="Text" SelectedValue="{Binding Path=Lane6Color}" SelectedValuePath="Color" />
+                            <Label Height="28" HorizontalAlignment="Left" Margin="24,0,0,11" Name="label15" VerticalAlignment="Bottom" Width="51">Lane 6</Label>
+                        </Grid>
+                    </GroupBox>
+                    
+                    
+                    <GroupBox Header="Lane Style" Margin="230,23,0,0" Name="groupBox2" IsEnabled="True" SnapsToDevicePixels="True" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="210" Height="282.132" VerticalAlignment="Top">
+                        <Grid Height="251" Name="grid2" Width="200" Margin="5,5,5,5">
+                            <ListBox Margin="10,90,10,10" Name="listBox1"
+                                ItemsSource="{Binding Path=LaneStyleComboItems}"
+                                DisplayMemberPath="Text"
+                                SelectedValue="{Binding Path=LaneStyle}"
+                                SelectedValuePath="Value" 
+                                Width="170"
+                                Height="150" />
+                    
+                            <Controls:LaneView x:Name="LaneViewer" Background="Black"
+                                Margin="10,5,10,180"
+                                ItemsSource="{Binding Path=LaneCollection}"
+                                LaneStyle="{Binding Path=LaneStyle}"
+                                Width="170" Height="70" IsHitTestVisible="True"
+                                IsTabStop="False" />
+                        </Grid>
+                    </GroupBox>
+                    
+                </Grid>
+            </TabItem>
+            
+        </TabControl>
+            
+            
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,11,11"
+                Name="CancelButton" VerticalAlignment="Bottom" Width="75"
+                Click="CancelButton_Click">Cancel</Button>
+        
+        <Button Height="23" Margin="0,0,93,11" Name="OKButton"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"
+                Click="OKButton_Click">OK</Button>
+
+    </Grid>
+        
+</src:WindowBase>

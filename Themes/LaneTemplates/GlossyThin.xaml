@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LapX">
+	<DataTemplate x:Key="LVTemplateGlossyThin">
+        <Grid>
+            
+		<Viewbox Stretch="Uniform">
+			<Canvas Width="1382.36" Height="230">
+				<Path x:Name="DarkGrayPart" Width="1112.34" Height="91.5112" Canvas.Left="194.535" Canvas.Top="112" Stretch="Fill" StrokeThickness="4" StrokeMiterLimit="2.75" Stroke="#FF000000" Data="F1 M 1304.88,114L 220.552,114L 196.535,201.511L 1280.86,201.511L 1304.88,114 Z ">
+					<Path.Fill>
+						<LinearGradientBrush StartPoint="0.350073,7.91612e-005" EndPoint="0.350073,0.944449">
+							<LinearGradientBrush.GradientStops>
+								<GradientStop Color="#FE1B1B1B" Offset="0"/>
+								<GradientStop Color="#FE474646" Offset="0.142395"/>
+								<GradientStop Color="#FE747272" Offset="0.200647"/>
+								<GradientStop Color="#FF5F5E5E" Offset="0.818329"/>
+								<GradientStop Color="#FF4B4A4A" Offset="1"/>
+							</LinearGradientBrush.GradientStops>
+						</LinearGradientBrush>
+					</Path.Fill>
+				</Path>
+                
+                <TextBlock FontSize="50" Foreground="#a0000000"
+                                   Canvas.Left="920" Canvas.Top="125">Best:</TextBlock>
+               <TextBlock FontSize="50" Foreground="#a0ffffff"
+                                   Canvas.Left="1036" Canvas.Top="125" Width="230" TextAlignment="Right"
+                                   Text="{Binding BestLapTime}" />
+                
+                <Rectangle x:Name="FinishFlag2" 
+                            Fill="{DynamicResource Chequered}"
+                           Canvas.Left="400" Canvas.Top="135"
+                           Width="50" Height="50" Opacity="0.0"/>
+                
+                
+				<Path x:Name="LightGrayPart" Width="1168.72" Height="110" Canvas.Left="207.639" Canvas.Top="6.00006" Stretch="Fill" StrokeThickness="4" StrokeMiterLimit="2.75" Stroke="#FF000000" Data="F1 M 209.639,114L 1346.52,114L 1374.36,8.00006L 237.474,8.00006L 209.639,114 Z ">
+					<Path.Fill>
+						<LinearGradientBrush StartPoint="0.314579,-0.00466343" EndPoint="0.314579,0.995336">
+							<LinearGradientBrush.GradientStops>
+								<GradientStop Color="#FEC6C6C6" Offset="0"/>
+								<GradientStop Color="#FED8D8D8" Offset="0.280012"/>
+								<GradientStop Color="#FEEBEBEB" Offset="0.521036"/>
+								<GradientStop Color="#FFE2E2E2" Offset="1"/>
+							</LinearGradientBrush.GradientStops>
+						</LinearGradientBrush>
+					</Path.Fill>
+				</Path>
+                
+                 <TextBlock FontSize="75" Foreground="Black"
+                                   Canvas.Left="300" Canvas.Top="10"
+                                   Width="250"
+                                   Text="Lap:" />
+                
+                <TextBlock FontSize="75" Foreground="Black"
+                                   Canvas.Left="480" Canvas.Top="10"
+                                   Width="250"
+                                   Text="{Binding Lap}" />
+                                     
+                <TextBlock FontSize="75" Foreground="Black"
+                                   Canvas.Left="936" Width="400" TextAlignment="Right"
+                                   Canvas.Top="10" Text="{Binding LastLapTime}" />
+                
+                <Path Width="260.999" Height="218" Canvas.Left="6" Canvas.Top="6" Stretch="Fill" Data="F1 M 48.999,8L 264.999,8L 224,222L 8,222L 48.999,8 Z ">
+					<Path.Fill>
+                        <SolidColorBrush Color="{Binding LaneColor}"/>
+					</Path.Fill>
+				</Path>
+                
+				<Path x:Name="BluePosition" Width="260.999" Height="218" Canvas.Left="6" Canvas.Top="6" Stretch="Fill" StrokeThickness="4" StrokeMiterLimit="2.75" Data="F1 M 48.999,8L 264.999,8L 224,222L 8,222L 48.999,8 Z ">
+					<Path.Stroke>
+                        <SolidColorBrush x:Name="LapHighlight" Color="#ff000000"/>
+                    </Path.Stroke>
+                    
+                    <Path.Fill>
+						<RadialGradientBrush RadiusX="1.59821" RadiusY="1.3715" Center="0.841133,1.39406" GradientOrigin="0.841133,1.39406">
+							<RadialGradientBrush.GradientStops>
+								<GradientStop Color="#20000000" Offset="0"/>
+								<GradientStop Color="#40000000" Offset ="0.527508"/>
+								<GradientStop Color="#80000000" Offset="1"/>
+							</RadialGradientBrush.GradientStops>
+							<RadialGradientBrush.RelativeTransform>
+								<TransformGroup>
+									<SkewTransform CenterX="0.841133" CenterY="1.39406" AngleX="6.21254" AngleY="0"/>
+									<RotateTransform CenterX="0.841133" CenterY="1.39406" Angle="254.756"/>
+								</TransformGroup>
+							</RadialGradientBrush.RelativeTransform>
+						</RadialGradientBrush>
+					</Path.Fill>
+				</Path>
+                
+                 <TextBlock FontSize="150" Foreground="White"
+                                  Canvas.Left="50" Canvas.Top="20"
+                                  Width="100" TextAlignment="Right"
+                                  Text="{Binding Position}" />
+                 <TextBlock FontSize="75" Foreground="White"
+                                  Canvas.Left="150"
+                                  Canvas.Top="20"
+                                  Width="90" TextAlignment="Left"
+                                  Text="{Binding PositionSuffix}" />
+                
+                
+				<Path x:Name="GlassOverlayer" Width="1091.57" Height="34.4983" Canvas.Left="266.713" Canvas.Top="15.202" Stretch="Fill" Data="F1 M 283.963,15.202L 1341.03,15.202C 1350.56,15.202 1358.28,22.9247 1358.28,32.4512L 1358.28,32.4512C 1358.28,41.9776 1350.56,49.7003 1341.03,49.7003L 283.963,49.7003C 274.436,49.7003 266.713,41.9776 266.713,32.4512L 266.713,32.4512C 266.713,22.9247 274.436,15.202 283.963,15.202 Z ">
+					<Path.Fill>
+						<LinearGradientBrush StartPoint="0.379397,0.0147252" EndPoint="0.379397,0.884291">
+							<LinearGradientBrush.GradientStops>
+								<GradientStop Color="#00FFFFFF" Offset="0"/>
+								<GradientStop Color="#40FFFFFF" Offset="0.644013"/>
+								<GradientStop Color="#50fFFFFF" Offset="1"/>
+							</LinearGradientBrush.GradientStops>
+						</LinearGradientBrush>
+					</Path.Fill>
+				</Path>
+			</Canvas>
+            
+            
+            
+		</Viewbox>
+    </Grid>
+        
+    <DataTemplate.Triggers>
+    
+            <DataTrigger Binding="{Binding Path=Finished}" Value="true">
+                <DataTrigger.Setters>
+                    <Setter Property="Opacity" TargetName="FinishFlag2" Value="1.0" />
+                </DataTrigger.Setters>
+            </DataTrigger>
+    
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.FastestLap}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Gold" To="Black" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+            
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.PersonalBest}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="Blue" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>
+                        
+            <DataTrigger Binding="{Binding Path=LapType}" Value="{x:Static local:LapType.Detected}">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard FillBehavior="Stop">
+                            <ColorAnimation Storyboard.TargetName="LapHighlight"
+                                Storyboard.TargetProperty="Color"
+                                From="White" Duration="0:0:1"></ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+            </DataTrigger>   
+    </DataTemplate.Triggers>
+        
+    </DataTemplate>
+</ResourceDictionary>
+    

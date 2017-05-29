@@ -1,0 +1,24 @@
+﻿<Application x:Class="LapX.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="Windows/MainWindow.xaml">
+    <Application.Resources>
+         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Drawings and DrawingBrushes -->
+                <ResourceDictionary Source="Themes/ChequeredFlag.xaml"></ResourceDictionary>
+                
+                <!-- LaneView templates -->
+                <ResourceDictionary Source="Themes/LaneTemplates/Standard.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/LaneTemplates/Standard2.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/LaneTemplates/Thin.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/LaneTemplates/Glossy.xaml"></ResourceDictionary>               
+                <ResourceDictionary Source="Themes/LaneTemplates/GlossyThin.xaml"></ResourceDictionary>               
+                <ResourceDictionary Source="Themes/LaneTemplates/Twilight.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/LaneTemplates/Sunset.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/LaneTemplates/Moonlight.xaml"></ResourceDictionary>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

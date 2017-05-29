@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="LapX.Windows.RMSPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
+        <ListBox IsEnabled="{Binding Path=UseScalexRMS}"
+                 Margin="20,20,20,55"
+                 ItemsSource="{Binding Path=SerialPortNames}"
+                 
+                 SelectedItem="{Binding Path=ScalexRMSComPortName, Mode=TwoWay}"
+                 />
+        <CheckBox Height="16" Margin="20,0,20,23"
+                  IsChecked="{Binding Path=RMSUseInpOut32}"
+                  VerticalAlignment="Bottom">Use inpout32.dll for Fast IO</CheckBox>
+    </Grid>
+</UserControl>

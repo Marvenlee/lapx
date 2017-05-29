@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="LapX.Windows.ParallelPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="296" Width="307">
+    <Grid>
+        <Label Height="28" Margin="58,21,122,0" Name="label1" VerticalAlignment="Top">IO Port</Label>
+        <Label Height="28" Margin="58,59,122,0" Name="label4" VerticalAlignment="Top">Lane 1</Label>
+        <Label Height="28" Margin="58,96,122,0" Name="label5" VerticalAlignment="Top">Lane 2</Label>
+        <Label Margin="58,133,122,0" Name="label6" Height="28" VerticalAlignment="Top">Lane 3</Label>
+        <Label Margin="58,171,122,0" Name="label7" Height="28" VerticalAlignment="Top">Lane 4</Label>
+        <Label Height="28" Margin="58,209,122,0" Name="label8" VerticalAlignment="Top">Lane 5</Label>
+
+
+        <ComboBox DisplayMemberPath="Text" Height="23"
+                  ItemsSource="{Binding Path=ParIOPortComboItems}"
+                  Margin="126,21,54,0" 
+                  SelectedIndex="0"
+                  SelectedValue="{Binding Path=ParIOPort}"
+                  SelectedValuePath="Value" VerticalAlignment="Top" />
+
+        
+        <ComboBox SelectedIndex="0" Height="23" Margin="126,59,54,0"
+                VerticalAlignment="Top"
+                ItemsSource="{Binding Path=ParPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane1ParPin}"
+                SelectedValuePath="Value"  />
+       
+        <ComboBox SelectedIndex="1" Height="23" 
+                Margin="126,96,54,0"
+                VerticalAlignment="Top"
+                ItemsSource="{Binding Path=ParPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane2ParPin}"
+                SelectedValuePath="Value" />
+            
+            
+        <ComboBox SelectedIndex="2" Margin="126,133,54,0"
+                ItemsSource="{Binding Path=ParPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane3ParPin}"
+                SelectedValuePath="Value" Height="23" VerticalAlignment="Top" />
+        
+        <ComboBox SelectedIndex="3" Margin="126,171,54,0"
+                ItemsSource="{Binding Path=ParPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane4ParPin}"
+                SelectedValuePath="Value" Height="23" VerticalAlignment="Top" />
+
+        
+        <ComboBox SelectedIndex="4" Height="23" Margin="126,209,54,0"
+                VerticalAlignment="Top" ItemsSource="{Binding Path=ParPinComboItems}"
+                DisplayMemberPath="Text"
+                SelectedValue="{Binding Path=Lane5ParPin}"
+                SelectedValuePath="Value" />
+        <CheckBox Height="16" Margin="126,249,43,0" Name="CheckBoxParInvert" IsChecked="{Binding Path=ParallelPortInvertLogic}" VerticalAlignment="Top">Invert Parallel Port Inputs</CheckBox>
+
+    </Grid>
+</UserControl>
